@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="card px-3 my-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Liste des projets</h2>
+            <div class="actions d-flex justify-content-between align-items-center">
+                <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Nouveau
+                    projet</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" *ngFor="let project of projects">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ project?.name }}</h2>
+                    <p><strong>Secteur d'activite: </strong>{{ project?.domain }}</p>
+                    <p><strong>Durée: </strong>{{ project?.duration }} mois</p>
+                    <p><strong>Fianancement: </strong>{{ project?.funding }} €</p>
+                    <p><strong>Porteur de projet: </strong>{{ project?.user?.name }} {{ project?.user?.firstname }}</p>
+
+                    <div class="d-flex justify-content-between align-items-center mt-5">
+                        <button type="button" class="btn btn-sm btn-dark">Modifier</button>
+                        <button type="submit" class="btn btn-sm btn-danger" (click)="delete(project?.id)">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Nouveau projet</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row" [formGroup]="projetForm" (ngSubmit)="save()">
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Nom</label>
+                        <input type="text" formControlName="name" class="form-control" placeholder="Nom" required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Secteur d'activite</label>
+                        <input type="text" formControlName="domain" class="form-control" placeholder="Prenom" required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Durée</label>
+                        <input type="number" formControlName="duration" class="form-control" placeholder="Email"
+                            required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Financement</label>
+                        <input type="number" formControlName="funding" class="form-control" placeholder="Financement"
+                            required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Description</label>
+                        <textarea class="form-control" formControlName="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group pt-3 text-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-dark">Fermer</button>
+                            <button type="submit" class="btn btn-sm btn-dark">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

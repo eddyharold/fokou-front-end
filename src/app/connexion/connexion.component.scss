@@ -1,0 +1,74 @@
+/*body {
+    background-image: url("../../asset/images/laptop-g8928c4b34_1280.jpg");
+    background-size: 100%;
+    background-size: cover;
+}*/
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 140%;
+}
+
+.example-full-width {
+    width: 140%;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+.custom {
+    border-radius: 20px;
+    width: 115%;
+    margin: 10%;
+}
+
+.custom2 {
+    border-radius: 20px;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+.h3 {
+    margin-left: 28%;
+    text-justify: auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+}
+
+#bloc1,
+#option1 {
+    margin-left: 20%;
+}
+
+.nameregister,
+.firstnameregister,
+.telephoneregister,
+.emailregister {
+    width: 100%;
+}
+
+.passwordregister {
+    width: 98%;
+    margin-left: 1%;
+}
+
+.head {
+    text-align: center;
+}
+
+.corp {
+    margin-top: 10%;
+}

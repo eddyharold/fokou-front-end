@@ -1,0 +1,185 @@
+<!--div [style.background-image]="'url(./images/' + laptop-g8928c4b34_1280.img + ')'"></div-->
+<div class="container-fluid h-100 d-flex justify-content-center align-items-center">
+    <div style="max-width: 40%;">
+        <div class="card">
+            <ul class="nav nav-tabs nav-pills nav-justified" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                        type="button" role="tab" aria-controls="login" aria-selected="true">Connexion</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                        type="button" role="tab" aria-controls="register" aria-selected="false">Inscription</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card mt-3">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                    <form class="row p-5" [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div class="form-group col-md-12 mb-3">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col-md-12 mb-3">
+                            <label>Mot de passe</label>
+                            <input type="password" formControlName="password" class="form-control" placeholder="Mot de passe" required>
+                        </div>
+                        <div class="form-group pt-3 text-center">
+                            <button type="submit" class="btn btn-sm btn-primary">Se connecter</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                    <form class="row p-5" [formGroup]="registerForm" (ngSubmit)="register()">
+                        <div class="form-group col-md-6 mb-3">
+                            <label>Nom</label>
+                            <input type="text" formControlName="name" class="form-control" placeholder="Nom" required>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label>Prenom</label>
+                            <input type="text" formControlName="firstname" class="form-control" placeholder="Prenom" required>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label>Télephone</label>
+                            <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Télephone" required>
+                        </div>
+                        <div class="form-group col-md-12 mb-3">
+                          <label>Personalité</label>
+                          <select class="form-control" formControlName="personality">
+                            <option value="INVESTISSEUR">Investisseur</option>
+                            <option value="PORTEUR_PROJET">Porteur de projet</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-12 mb-3">
+                            <label>Mot de passe</label>
+                            <input type="password" formControlName="password" class="form-control" placeholder="Mot de passe" required>
+                        </div>
+                        <div class="form-group pt-3 text-center">
+                            <button type="submit" class="btn btn-sm btn-primary">S'incrire</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4 corp w-50 mx-auto">
+        <mat-tab label="Login">
+            <div class="container" id="bloc2">
+                <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <div class="head">
+                        <br>
+                        <h3 class="h3">Who are you?</h3>
+                        <mat-radio-group aria-label="Select an option" id="option1">
+                            <mat-radio-button value="1">A project leader</mat-radio-button>
+                            <mat-radio-button value="2">An investor</mat-radio-button>
+                        </mat-radio-group>
+                        <br>
+                        <br>
+                    </div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <span matPrefix>
+                            <mat-icon>email</mat-icon> &nbsp;
+                        </span>
+                        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter your password</mat-label>
+                        <span matPrefix>
+                            <mat-icon>lock</mat-icon> &nbsp;
+                        </span>
+                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <button class="btn btn-lg btn-info custom justify-content-center"
+                        (click)="login()">Connexion</button>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="Register">
+            <div class="container" id="bloc2">
+                <form class="form-inline">
+                    <div class="head">
+                        <br>
+                        <h3 class="h2">Who are you?</h3>
+                        <mat-radio-group aria-label="Select an option" id="option2">
+                            <mat-radio-button value="1">A project leader</mat-radio-button>
+                            <mat-radio-button value="2">An investor</mat-radio-button>
+                        </mat-radio-group>
+                        <br>
+                        <br>
+                        <h3 class="h2">What is your legal personality?</h3>
+                        <mat-radio-group aria-label="Select an option" id="option2">
+                            <mat-radio-button value="1">Natural person(individual)</mat-radio-button>
+                            <mat-radio-button value="2">Legal person (compagny)</mat-radio-button>
+                        </mat-radio-group>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <mat-form-field class="nameregister" appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <span matPrefix>
+                                    <mat-icon>perm_identity</mat-icon> &nbsp;
+                                </span>
+                                <input matInput required>
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="emailregister" appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <span matPrefix>
+                                    <mat-icon>email</mat-icon> &nbsp;
+                                </span>
+                                <input type="email" matInput placeholder="Ex. pat@example.com">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6">
+                            <mat-form-field class="firstnameregister" appearance="fill">
+                                <mat-label>First-Name</mat-label>
+                                <span matPrefix>
+                                    <mat-icon>perm_identity</mat-icon> &nbsp;
+                                </span>
+                                <input matInput required>
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="nameregister" appearance="fill">
+                                <mat-label>Phone Number</mat-label>
+                                <span matPrefix>
+                                    <mat-icon>phone</mat-icon> &nbsp;
+                                </span>
+                                <input matInput required>
+                                <mat-icon matSuffix>mode_edit</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field class="passwordregister" appearance="fill">
+                            <mat-label>Enter your password</mat-label>
+                            <span matPrefix>
+                                <mat-icon>lock</mat-icon> &nbsp;
+                            </span>
+                            <input matInput [type]="hide ? 'password' : 'text'" required>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <br>
+                        <button class="btn btn-lg btn-info custom2 justify-content-center">Connexion</button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+    </mat-tab-group> -->
+</div>
