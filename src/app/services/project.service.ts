@@ -16,6 +16,10 @@ export class ProjectService {
     return this.http.post(`${source}`, data);
   }
 
+  update(id:any, data: any) {
+    return this.http.put(`${source}/${id}`, data);
+  }
+
   getAll() {
     return this.http.get(`${source}`);
   }

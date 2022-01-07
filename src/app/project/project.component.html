@@ -20,7 +20,7 @@
                     <p><strong>Porteur de projet: </strong>{{ project?.user?.name }} {{ project?.user?.firstname }}</p>
 
                     <div class="d-flex justify-content-between align-items-center mt-5">
-                        <button type="button" class="btn btn-sm btn-dark">Modifier</button>
+                        <button type="button" class="btn btn-sm btn-dark" (click)="edit(project)">Modifier</button>
                         <button type="submit" class="btn btn-sm btn-danger" (click)="delete(project?.id)">Supprimer</button>
                     </div>
                 </div>
@@ -62,7 +62,50 @@
                     </div>
                     <div class="form-group pt-3 text-center">
                         <div class="d-flex justify-content-between align-items-center">
-                            <button type="button" class="btn btn-sm btn-outline-dark">Fermer</button>
+                            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-dismiss="modal" (click)="cancel()">Fermer</button>
+                            <button type="submit" class="btn btn-sm btn-dark">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="editModalLabel">Modifier le projet {{ selectedProject?.name }}</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row" [formGroup]="projetForm" (ngSubmit)="update()">
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Nom</label>
+                        <input type="text" formControlName="name" class="form-control" placeholder="Nom" required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Secteur d'activite</label>
+                        <input type="text" formControlName="domain" class="form-control" placeholder="Prenom" required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Durée</label>
+                        <input type="number" formControlName="duration" class="form-control" placeholder="Email"
+                            required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Financement</label>
+                        <input type="number" formControlName="funding" class="form-control" placeholder="Financement"
+                            required>
+                    </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label>Description</label>
+                        <textarea class="form-control" formControlName="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group pt-3 text-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-dismiss="modal" (click)="cancel()">Fermer</button>
                             <button type="submit" class="btn btn-sm btn-dark">Enregistrer</button>
                         </div>
                     </div>
